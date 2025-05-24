@@ -4,7 +4,6 @@ import React, {
   useRef,
   useMemo,
   memo,
-  Suspense,
 } from "react";
 import {
   motion,
