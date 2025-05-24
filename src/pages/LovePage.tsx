@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useMemo,
-  memo,
-} from "react";
+import React, { useEffect, useState, useRef, useMemo, memo } from "react";
 import {
   motion,
   AnimatePresence,
@@ -27,7 +21,6 @@ const START_DAY = 1;
 
 // --- Utility: Memoize random array ---
 function useRandomArray<T>(length: number, generator: () => T): T[] {
-  // No dependencies: never re-run after first render
   return useMemo(() => Array.from({ length }).map(generator), []);
 }
 
@@ -233,8 +226,7 @@ const LovePage: React.FC = () => {
         </div>
         {/* Audio */}
         <audio ref={audioRef} loop>
-          <source src="/music/ambient-love-piano.mp3" type="audio/mpeg" />
-          <source src="/music/romantic-ambient.mp3" type="audio/mpeg" />
+          <source src="/music/romantic.mp3" type="audio/mpeg" />
         </audio>
         {/* Floating Elements */}
         <FloatingBackground />
@@ -277,7 +269,7 @@ const LovePage: React.FC = () => {
         {/* Music Control Button */}
         <motion.button
           onClick={toggleMusic}
-          className="fixed top-6 right-6 bg-pink-200/30 backdrop-blur-lg rounded-full p-4 text-rose-600 hover:bg-pink-200/50 transition-all shadow-lg border border-pink-200/50 z-50"
+          className="fixed top-4 right-2 md:top-6 md:right-6 bg-pink-200/30 backdrop-blur-lg rounded-full p-2 md:p-4 text-rose-600 hover:bg-pink-200/50 transition-all shadow-lg border border-pink-200/50 z-50"
           whileHover={{
             scale: 1.1,
             boxShadow: "0 10px 30px rgba(236, 72, 153, 0.3)",
@@ -297,21 +289,21 @@ const LovePage: React.FC = () => {
           }
           transition={{ duration: 2, repeat: isPlaying ? Infinity : 0 }}
         >
-          <Music className="w-6 h-6" />
+          <Music className="w-5 h-5 md:w-6 md:h-6" />
         </motion.button>
         {/* Main Content */}
-        <div className="relative min-h-screen w-full flex items-center justify-center p-4 z-20">
-          <div className="w-full max-w-6xl mx-auto">
+        <div className="relative min-h-screen w-full flex items-center justify-center p-2 md:p-4 z-20">
+          <div className="w-full max-w-4xl md:max-w-6xl mx-auto">
             {/* Hero Section */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              className="text-center mb-16"
+              className="text-center mb-8 md:mb-16"
             >
               {/* Glowing Heart Icon */}
               <motion.div
-                className="inline-flex items-center justify-center w-32 h-32 rounded-full mb-8 relative"
+                className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-8 relative"
                 whileHover={{ scale: 1.1 }}
                 animate={{
                   boxShadow: [
@@ -327,7 +319,7 @@ const LovePage: React.FC = () => {
                 }}
               >
                 <Heart
-                  className="w-16 h-16 text-white drop-shadow-lg"
+                  className="w-12 h-12 md:w-16 md:h-16 text-white drop-shadow-lg"
                   fill="currentColor"
                 />
                 {/* Sparkles */}
@@ -356,29 +348,29 @@ const LovePage: React.FC = () => {
               </motion.div>
               {/* Magical Title */}
               <motion.h1
-                className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-400 to-purple-500 drop-shadow-2xl relative"
+                className="text-3xl md:text-6xl lg:text-8xl font-bold mb-3 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-400 to-purple-500 drop-shadow-2xl relative"
                 style={{ fontFamily: "'Great Vibes', cursive" }}
                 animate={{
                   backgroundPosition: ["0%", "100%", "0%"],
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               >
-                Happy 100 Days
+                Chúc mừng em
                 {/* Glowing Effect */}
                 <motion.div
-                  className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-bold text-pink-300/20 blur-sm"
+                  className="absolute inset-0 text-3xl md:text-6xl lg:text-8xl font-bold text-pink-300/20 blur-sm"
                   style={{ fontFamily: "'Great Vibes', cursive" }}
                   animate={{
                     opacity: [0.5, 1, 0.5],
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  Happy 100 Days
+                  Chúc mừng 100 ngày chúng mình yêu nhau
                 </motion.div>
               </motion.h1>
               {/* Floating Hearts */}
               <motion.div
-                className="text-8xl md:text-9xl mb-8 relative"
+                className="text-5xl md:text-8xl mb-4 md:mb-8 relative"
                 animate={{
                   scale: [1, 1.2, 1],
                   rotate: [0, 5, -5, 0],
@@ -393,13 +385,13 @@ const LovePage: React.FC = () => {
                 {["💖", "💗", "💝"].map((heart, i) => (
                   <motion.span
                     key={i}
-                    className="absolute text-4xl"
+                    className="absolute text-2xl md:text-4xl"
                     style={{
                       top: "50%",
                       left: "50%",
                       transform: `translate(-50%, -50%) rotate(${
                         i * 120
-                      }deg) translateY(-80px)`,
+                      }deg) translateY(-60px)`,
                     }}
                     animate={{
                       rotate: [i * 120, i * 120 + 360],
@@ -417,13 +409,13 @@ const LovePage: React.FC = () => {
                 ))}
               </motion.div>
               <motion.h2
-                className="text-4xl md:text-6xl text-rose-500 font-semibold drop-shadow-lg"
+                className="text-lg md:text-4xl text-rose-500 font-semibold drop-shadow-lg"
                 style={{ fontFamily: "'Dancing Script', cursive" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 }}
               >
-                My Precious Love
+                Cô tấm của anh
               </motion.h2>
             </motion.div>
             {/* Enchanted Stats */}
@@ -431,11 +423,11 @@ const LovePage: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 1 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16"
             >
               {[
                 {
-                  label: "Days of Pure Magic",
+                  label: "Days of Happiness",
                   icon: Calendar,
                   gradient: "from-pink-400 to-rose-500",
                 },
@@ -454,7 +446,7 @@ const LovePage: React.FC = () => {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white/40 backdrop-blur-xl rounded-3xl p-8 border border-pink-200/50 shadow-xl relative overflow-hidden"
+                  className="bg-white/40 backdrop-blur-xl rounded-3xl p-4 md:p-8 border border-pink-200/50 shadow-xl relative overflow-hidden"
                   whileHover={{
                     scale: 1.05,
                     y: -10,
@@ -471,28 +463,28 @@ const LovePage: React.FC = () => {
                     className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-10 rounded-3xl`}
                   ></div>
                   <div
-                    className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${stat.gradient} rounded-full mb-6 shadow-lg`}
+                    className={`inline-flex items-center justify-center w-10 h-10 md:w-16 md:h-16 bg-gradient-to-r ${stat.gradient} rounded-full mb-4 md:mb-6 shadow-lg`}
                   >
                     <stat.icon
-                      className="w-8 h-8 text-white"
+                      className="w-6 h-6 md:w-8 md:h-8 text-white"
                       fill="currentColor"
                     />
                   </div>
                   <motion.div
-                    className="text-5xl md:text-6xl font-bold mb-4 text-rose-600"
+                    className="text-2xl md:text-5xl font-bold mb-2 md:mb-4 text-rose-600"
                     style={{ fontFamily: "'Dancing Script', cursive" }}
                   >
-                    {stat.label === "Days of Pure Magic" ? (
+                    {stat.label === "Days of Happiness" ? (
                       <AnimatedDayNumber />
                     ) : (
                       stat.number
                     )}
                   </motion.div>
-                  <div className="text-rose-500 font-medium text-lg">
+                  <div className="text-rose-500 font-medium text-sm md:text-lg">
                     {stat.label}
                   </div>
                   <motion.div
-                    className="absolute top-4 right-4 text-yellow-400"
+                    className="absolute top-2 right-2 md:top-4 md:right-4 text-yellow-400"
                     animate={{
                       rotate: [0, 360],
                       scale: [1, 1.2, 1],
@@ -512,29 +504,29 @@ const LovePage: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.8, duration: 1.2 }}
-              className="bg-white/50 backdrop-blur-2xl rounded-3xl p-12 mb-16 border border-pink-200/50 shadow-2xl relative overflow-hidden"
+              className="bg-white/50 backdrop-blur-2xl rounded-3xl p-4 md:p-12 mb-8 md:mb-16 border border-pink-200/50 shadow-2xl relative overflow-hidden"
             >
-              <div className="absolute top-4 left-4 text-pink-400">
-                <Flower2 className="w-8 h-8 opacity-60" />
+              <div className="absolute top-2 left-2 md:top-4 md:left-4 text-pink-400">
+                <Flower2 className="w-6 h-6 md:w-8 md:h-8 opacity-60" />
               </div>
-              <div className="absolute top-4 right-4 text-pink-400">
-                <Flower2 className="w-8 h-8 opacity-60 transform scale-x-[-1]" />
+              <div className="absolute top-2 right-2 md:top-4 md:right-4 text-pink-400">
+                <Flower2 className="w-6 h-6 md:w-8 md:h-8 opacity-60 transform scale-x-[-1]" />
               </div>
-              <div className="max-w-4xl mx-auto text-center">
+              <div className="max-w-2xl md:max-w-4xl mx-auto text-center">
                 <motion.p
-                  className="text-2xl md:text-3xl font-light text-rose-700 leading-relaxed mb-8"
+                  className="text-lg md:text-2xl font-light text-rose-700 leading-relaxed mb-4 md:mb-8"
                   style={{ fontFamily: "'Dancing Script', cursive" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2.2 }}
                 >
-                  "In your eyes, I found my home. In your smile, I found my joy.
-                  In your heart, I found my forever. Every sunrise with you
-                  feels like the first day of spring, full of promise and
-                  endless beauty. Here's to our love story that grows more
-                  magical with each passing day."
+                  "Cảm ơn em đã là cô tấm của anh, người đã biến những ngày bình
+                  thường trở nên hạnh phúc và ý nghĩa. Mỗi khoảnh khắc bên em là
+                  một trang truyện cổ tích, nơi tình yêu của chúng ta là phép
+                  màu duy nhất. Anh hứa sẽ luôn là hoàng tử của em, cùng em viết
+                  nên câu chuyện đẹp nhất đời mình."
                 </motion.p>
-                <div className="flex justify-center items-center gap-6 text-4xl mb-8">
+                <div className="flex justify-center items-center gap-3 md:gap-6 text-2xl md:text-4xl mb-4 md:mb-8">
                   {["💕", "🌹", "💗", "✨", "💝", "🌸", "💖"].map(
                     (emoji, index) => (
                       <motion.span
@@ -561,13 +553,13 @@ const LovePage: React.FC = () => {
             </motion.div>
             {/* Surprise Button and Letter */}
             <motion.div
-              className="text-center mb-12"
+              className="text-center mb-8 md:mb-12"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 2.5, duration: 0.8 }}
             >
               <motion.button
-                className="relative bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 hover:from-pink-600 hover:via-rose-600 hover:to-purple-600 px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition-all flex items-center gap-4 mx-auto text-white border-2 border-white/30 overflow-hidden"
+                className="relative bg-gradient-to-r from-pink-500 via-rose-500 to-purple-500 hover:from-pink-600 hover:via-rose-600 hover:to-purple-600 px-4 md:px-12 py-3 md:py-6 rounded-full text-lg md:text-2xl font-bold shadow-2xl transition-all flex items-center gap-2 md:gap-4 mx-auto text-white border-2 border-white/30 overflow-hidden"
                 style={{ fontFamily: "'Dancing Script', cursive" }}
                 whileTap={{ scale: 0.95 }}
                 whileHover={{
@@ -595,26 +587,26 @@ const LovePage: React.FC = () => {
                     repeatDelay: 1,
                   }}
                 />
-                <Sparkles className="w-6 h-6 z-10" />
-                💝 Open Your Heart's Gift 💝
-                <Gift className="w-6 h-6 z-10" />
+                <Sparkles className="w-4 h-4 md:w-6 md:h-6 z-10" />
+                💝 Nhấn vào đây nha 💝
+                <Gift className="w-4 h-4 md:w-6 md:h-6 z-10" />
               </motion.button>
             </motion.div>
             <AnimatePresence>
               {showSurprise && (
                 <motion.div
-                  className="w-full max-w-4xl mx-auto"
+                  className="w-full max-w-2xl md:max-w-4xl mx-auto"
                   initial={{ opacity: 0, scale: 0.8, y: 100 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 100 }}
                   transition={{ duration: 1, type: "spring", bounce: 0.4 }}
                 >
-                  <div className="bg-white/60 backdrop-blur-2xl rounded-3xl p-12 border border-pink-200/50 shadow-2xl relative overflow-hidden">
+                  <div className="bg-white/60 backdrop-blur-2xl rounded-3xl p-4 md:p-12 border border-pink-200/50 shadow-2xl relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-purple-100/50 rounded-3xl"></div>
                     {Array.from({ length: 3 }).map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute text-pink-300 text-2xl opacity-60"
+                        className="absolute text-pink-300 text-lg md:text-2xl opacity-60"
                         style={{
                           top: `${20 + Math.random() * 60}%`,
                           left: `${10 + Math.random() * 80}%`,
@@ -633,11 +625,15 @@ const LovePage: React.FC = () => {
                         🌸
                       </motion.div>
                     ))}
-                    <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center relative z-10">
                       <motion.div
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: 0.3, type: "spring", bounce: 0.6 }}
+                        transition={{
+                          delay: 0.3,
+                          type: "spring",
+                          bounce: 0.6,
+                        }}
                         className="relative"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-pink-200/50 to-rose-200/50 rounded-3xl blur-xl"></div>
@@ -648,7 +644,7 @@ const LovePage: React.FC = () => {
                           loading="lazy"
                         />
                         <motion.div
-                          className="absolute top-4 right-4 text-4xl"
+                          className="absolute top-2 right-2 md:top-4 md:right-4 text-2xl md:text-4xl"
                           animate={{
                             scale: [1, 1.3, 1],
                             rotate: [0, 10, -10, 0],
@@ -668,7 +664,7 @@ const LovePage: React.FC = () => {
                         className="text-center md:text-left relative"
                       >
                         <motion.h3
-                          className="text-5xl md:text-6xl text-rose-600 mb-8 font-bold drop-shadow-lg"
+                          className="text-2xl md:text-5xl md:text-6xl text-rose-600 mb-4 md:mb-8 font-bold drop-shadow-lg"
                           style={{ fontFamily: "'Great Vibes', cursive" }}
                           animate={{
                             textShadow: [
@@ -679,50 +675,48 @@ const LovePage: React.FC = () => {
                           }}
                           transition={{ duration: 2, repeat: Infinity }}
                         >
-                          You Are My Universe 💝
+                          You Are My Sunshine 💝
                         </motion.h3>
-                        <div className="space-y-6 text-rose-700">
+                        <div className="space-y-2 md:space-y-6 text-rose-700">
                           <motion.p
-                            className="text-xl leading-relaxed"
+                            className="text-base md:text-xl leading-relaxed"
                             style={{ fontFamily: "'Dancing Script', cursive" }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8 }}
                           >
-                            My Dearest Love,
+                            Gửi em yêu,
                           </motion.p>
                           <motion.p
-                            className="text-lg leading-relaxed"
+                            className="text-base md:text-lg leading-relaxed"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1 }}
                           >
-                            These 100 days have been the most beautiful chapters
-                            of my life. Your laughter is my favorite melody,
-                            your smile my brightest star. In your arms, I've
-                            found my sanctuary, and in your love, my purpose.
+                            Hôm nay đánh dấu 100 ngày bên nhau. Anh mong muốn
+                            chúng mình sẽ tiếp tục cố gắng để xây dựng một tương
+                            lai hạnh phúc bên nhau.
                           </motion.p>
                           <motion.p
-                            className="text-lg leading-relaxed"
+                            className="text-base md:text-lg leading-relaxed"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.2 }}
                           >
-                            Here's to infinity more days of loving you, dreaming
-                            with you, and building our fairy tale together. You
-                            are my always and forever.
+                            Chúc em luôn vui vẻ, hạnh phúc và mãi là cô tấm của
+                            anh
                           </motion.p>
                           <motion.p
-                            className="text-xl font-semibold"
+                            className="text-lg md:text-xl font-semibold"
                             style={{ fontFamily: "'Dancing Script', cursive" }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.4 }}
                           >
-                            Forever yours, 💖
+                            Yêu, 💖
                           </motion.p>
                         </div>
-                        <div className="flex justify-center md:justify-start flex-wrap gap-4 text-3xl mt-8">
+                        <div className="flex justify-center md:justify-start flex-wrap gap-2 md:gap-4 text-xl md:text-3xl mt-4 md:mt-8">
                           {[
                             "💖",
                             "🌹",
@@ -757,7 +751,7 @@ const LovePage: React.FC = () => {
                   </div>
                 </motion.div>
               )}
-            </AnimatePresence>{" "}
+            </AnimatePresence>
           </div>
         </div>
       </div>
