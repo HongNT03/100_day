@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Sparkles, Calendar, Gift } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Heart, Sparkles, Calendar, Gift } from "lucide-react";
 
 interface ConfettiPiece {
   id: number;
@@ -29,8 +29,15 @@ const Love: React.FC = () => {
   useEffect(() => {
     const generateConfetti = (): ConfettiPiece[] => {
       const pieces: ConfettiPiece[] = [];
-      const colors = ['#ff6b9d', '#c44569', '#f8b500', '#ff9ff3', '#54a0ff', '#ff6b6b'];
-      
+      const colors = [
+        "#ff6b9d",
+        "#c44569",
+        "#f8b500",
+        "#ff9ff3",
+        "#54a0ff",
+        "#ff6b6b",
+      ];
+
       for (let i = 0; i < 100; i++) {
         pieces.push({
           id: i,
@@ -41,8 +48,8 @@ const Love: React.FC = () => {
           rotation: Math.random() * 360,
           velocity: {
             x: (Math.random() - 0.5) * 4,
-            y: Math.random() * 3 + 2
-          }
+            y: Math.random() * 3 + 2,
+          },
         });
       }
       return pieces;
@@ -50,14 +57,14 @@ const Love: React.FC = () => {
 
     const generateFloatingHearts = (): FloatingHeart[] => {
       const hearts: FloatingHeart[] = [];
-      const heartEmojis = ['💖', '💕', '💗', '💝', '❤️', '🌹', '💐', '✨'];
-      
+      const heartEmojis = ["💖", "💕", "💗", "💝", "❤️", "🌹", "💐", "✨"];
+
       for (let i = 0; i < 20; i++) {
         hearts.push({
           id: i,
           x: Math.random() * window.innerWidth,
           delay: Math.random() * 10,
-          emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)]
+          emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
         });
       }
       return hearts;
@@ -68,7 +75,7 @@ const Love: React.FC = () => {
 
     // Animate day counter
     const dayInterval = setInterval(() => {
-      setCurrentDay(prev => prev < 100 ? prev + 1 : 100);
+      setCurrentDay((prev) => (prev < 100 ? prev + 1 : 100));
     }, 30);
 
     return () => clearInterval(dayInterval);
@@ -84,9 +91,9 @@ const Love: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 1,
-        staggerChildren: 0.3
-      }
-    }
+        staggerChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -96,9 +103,9 @@ const Love: React.FC = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const heartVariants = {
@@ -108,15 +115,15 @@ const Love: React.FC = () => {
       transition: {
         duration: 2,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100 relative overflow-hidden">
       {/* Custom Styles */}
-      <style jsx>{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
         
         .dancing-script {
@@ -185,12 +192,12 @@ const Love: React.FC = () => {
             y: window.innerHeight + 100,
             x: piece.x + piece.velocity.x * 50,
             rotate: piece.rotation,
-            opacity: [0, 1, 1, 0]
+            opacity: [0, 1, 1, 0],
           }}
           transition={{
             duration: 4 + Math.random() * 2,
             delay: index * 0.1,
-            ease: "easeOut"
+            ease: "easeOut",
           }}
         />
       ))}
@@ -205,13 +212,13 @@ const Love: React.FC = () => {
           animate={{
             y: -100,
             opacity: [0, 1, 1, 0],
-            x: [0, 30, -30, 0]
+            x: [0, 30, -30, 0],
           }}
           transition={{
             duration: 8,
             delay: heart.delay,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           {heart.emoji}
@@ -235,11 +242,11 @@ const Love: React.FC = () => {
             >
               <Heart className="w-10 h-10 text-white" fill="currentColor" />
             </motion.div>
-            
+
             <h1 className="great-vibes text-6xl md:text-8xl text-pink-600 mb-4">
               Happy 100 Days
             </h1>
-            
+
             <motion.div
               className="text-8xl mb-4"
               variants={heartVariants}
@@ -247,7 +254,7 @@ const Love: React.FC = () => {
             >
               💖
             </motion.div>
-            
+
             <h2 className="dancing-script text-4xl md:text-5xl text-purple-700 font-semibold">
               My Love
             </h2>
@@ -275,19 +282,19 @@ const Love: React.FC = () => {
 
             {/* Animated Emojis */}
             <div className="flex justify-center items-center gap-6 text-4xl mb-8">
-              {['💕', '🌹', '💗', '✨', '💝'].map((emoji, index) => (
+              {["💕", "🌹", "💗", "✨", "💝"].map((emoji, index) => (
                 <motion.span
                   key={index}
                   animate={{
                     y: [0, -15, 0],
                     rotate: [0, 10, -10, 0],
-                    scale: [1, 1.2, 1]
+                    scale: [1, 1.2, 1],
                   }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
                     delay: index * 0.3,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 >
                   {emoji}
@@ -302,25 +309,33 @@ const Love: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="text-4xl font-bold text-pink-600 dancing-script mb-2">100</div>
+                <div className="text-4xl font-bold text-pink-600 dancing-script mb-2">
+                  100
+                </div>
                 <div className="text-gray-600 font-medium">Days of Love</div>
               </motion.div>
-              
+
               <motion.div
                 className="bg-white bg-opacity-40 rounded-2xl p-6"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="text-4xl font-bold text-purple-600 dancing-script mb-2">∞</div>
-                <div className="text-gray-600 font-medium">Precious Memories</div>
+                <div className="text-4xl font-bold text-purple-600 dancing-script mb-2">
+                  ∞
+                </div>
+                <div className="text-gray-600 font-medium">
+                  Precious Memories
+                </div>
               </motion.div>
-              
+
               <motion.div
                 className="bg-white bg-opacity-40 rounded-2xl p-6"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ duration: 0.2 }}
               >
-                <div className="text-4xl font-bold text-pink-600 dancing-script mb-2">1</div>
+                <div className="text-4xl font-bold text-pink-600 dancing-script mb-2">
+                  1
+                </div>
                 <div className="text-gray-600 font-medium">Forever Love</div>
               </motion.div>
             </div>
@@ -331,10 +346,10 @@ const Love: React.FC = () => {
             <motion.button
               onClick={handleSurpriseClick}
               className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg dancing-script flex items-center gap-2 mx-auto"
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 backgroundColor: "#ec4899",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+                boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
               }}
               whileTap={{ scale: 0.95 }}
             >
@@ -377,28 +392,31 @@ const Love: React.FC = () => {
                       My Heart Belongs to You 💝
                     </h3>
                     <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                      "In your eyes, I found my home. In your heart, I found my love. 
-                      In your soul, I found my mate. These 100 days are just the beginning 
-                      of our forever story. I love you more than words can express."
+                      "In your eyes, I found my home. In your heart, I found my
+                      love. In your soul, I found my mate. These 100 days are
+                      just the beginning of our forever story. I love you more
+                      than words can express."
                     </p>
 
                     <div className="flex justify-center gap-2 text-3xl">
-                      {['💖', '🌹', '💕', '✨', '💗', '🎀'].map((emoji, index) => (
-                        <motion.span
-                          key={index}
-                          animate={{
-                            y: [0, -10, 0],
-                            rotate: [0, 5, -5, 0]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.2
-                          }}
-                        >
-                          {emoji}
-                        </motion.span>
-                      ))}
+                      {["💖", "🌹", "💕", "✨", "💗", "🎀"].map(
+                        (emoji, index) => (
+                          <motion.span
+                            key={index}
+                            animate={{
+                              y: [0, -10, 0],
+                              rotate: [0, 5, -5, 0],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: index * 0.2,
+                            }}
+                          >
+                            {emoji}
+                          </motion.span>
+                        )
+                      )}
                     </div>
                   </motion.div>
                 </div>
