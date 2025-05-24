@@ -523,8 +523,8 @@ const LovePage: React.FC = () => {
                   "Cảm ơn em đã là cô tấm của anh, người đã biến những ngày bình
                   thường trở nên hạnh phúc và ý nghĩa. Mỗi khoảnh khắc bên em là
                   một trang truyện cổ tích, nơi tình yêu của chúng ta là phép
-                  màu duy nhất. Anh hứa sẽ luôn là hoàng tử của em, cùng em viết
-                  nên câu chuyện đẹp nhất đời mình."
+                  màu đẹp nhất. Anh hứa sẽ luôn đồng hành bên em, chia sẻ cùng
+                  em mọi khó khăn cũng như hạnh phúc."
                 </motion.p>
                 <div className="flex justify-center items-center gap-3 md:gap-6 text-2xl md:text-4xl mb-4 md:mb-8">
                   {["💕", "🌹", "💗", "✨", "💝", "🌸", "💖"].map(
